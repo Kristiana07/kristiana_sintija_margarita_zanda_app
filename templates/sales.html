@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sales Analytics Dashboard</h1>
+        <nav>
+            <a href="/" class="button">Home</a>
+        </nav>
+        <div class="graphs-container">
+            <div id="graph1" class="graph"></div>
+            <div id="graph2" class="graph"></div>
+            <div id="graph3" class="graph"></div>
+        </div>
+    </div>
+    <script>
+        var graphs = {{ graphs | safe }};
+        Plotly.newPlot('graph1', JSON.parse(graphs[0]));
+        Plotly.newPlot('graph2', JSON.parse(graphs[1]));
+        Plotly.newPlot('graph3', JSON.parse(graphs[2]));
+    </script>
+</body>
+</html>
